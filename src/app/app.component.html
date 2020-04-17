@@ -1,0 +1,24 @@
+<h1>Template-drive forms SELECT-OPTIONS</h1>
+<h2>Tracking simple string</h2>
+<form #f="ngForm">
+    <select name="country" [(ngModel)]="country1">
+        <option value="" disabled>Choose your country</option>
+        <option *ngFor="let country of countries" [value]="country.id">
+            {{ country.name }}
+        </option>
+    </select>
+</form>
+<p>Form value: </p>
+<pre>{{ f.value | json }}</pre>
+
+<h2>Tracking object</h2>
+<form #f2="ngForm">
+    <select [compareWith]="compareFn" name="country" [(ngModel)]="country2">
+        <option value="" disabled>Choose your country</option>
+        <option *ngFor="let country of countries" [ngValue]="country">
+            {{ country.name }}
+        </option>
+    </select>
+</form>
+<p>Form value: </p>
+<pre>{{ f2.value | json }}</pre>
